@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Application", "PG.Applic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Application.Contracts", "PG.Application.Contracts\PG.Application.Contracts.csproj", "{D0B1823C-5257-4DC0-BD0F-DBF2D49BA278}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PG.PiriGram.DB", "PG.PiriGram.DB\PG.PiriGram.DB.sqlproj", "{678B999B-C965-4BE1-A859-94704253B06E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{D0B1823C-5257-4DC0-BD0F-DBF2D49BA278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0B1823C-5257-4DC0-BD0F-DBF2D49BA278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0B1823C-5257-4DC0-BD0F-DBF2D49BA278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678B999B-C965-4BE1-A859-94704253B06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678B999B-C965-4BE1-A859-94704253B06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678B999B-C965-4BE1-A859-94704253B06E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{678B999B-C965-4BE1-A859-94704253B06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678B999B-C965-4BE1-A859-94704253B06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678B999B-C965-4BE1-A859-94704253B06E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

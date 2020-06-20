@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[Photos] (
+    [Id]           UNIQUEIDENTIFIER NOT NULL,
+    [ClipId]       UNIQUEIDENTIFIER NOT NULL,
+    [Title]        NVARCHAR (100)   NOT NULL,
+    [Subject]      NVARCHAR (100)   NULL,
+    [Sort]         SMALLINT         CONSTRAINT [DF_Photos_Sort] DEFAULT ((1)) NOT NULL,
+    [Rating]       SMALLINT         NULL,
+    [Tags]         NVARCHAR (500)   NULL,
+    [Comments]     NVARCHAR (MAX)   NULL,
+    [DateTaken]    DATETIME         NOT NULL,
+    [Dimensions]   NVARCHAR (25)    NULL,
+    [Width]        NVARCHAR (25)    NULL,
+    [Height]       NVARCHAR (25)    NULL,
+    [CameraMaker]  NVARCHAR (25)    NULL,
+    [CameraModel]  NVARCHAR (25)    NULL,
+    [Latitude]     DECIMAL (9, 6)   NOT NULL,
+    [Longitude]    DECIMAL (9, 6)   NOT NULL,
+    [Altitude]     DECIMAL (9, 6)   NULL,
+    [Size]         DECIMAL (9, 6)   NULL,
+    [DateCreated]  DATETIME         CONSTRAINT [DF_Photos_DateCreated] DEFAULT (getdate()) NOT NULL,
+    [DateModified] DATETIME         CONSTRAINT [DF_Photos_DateModified] DEFAULT (getdate()) NOT NULL,
+    CONSTRAINT [PK_Photos] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Photos_Clips] FOREIGN KEY ([ClipId]) REFERENCES [dbo].[Clips] ([Id])
+);
+
