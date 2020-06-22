@@ -4,5 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PG.Services.Contracts\PG.Services.Contracts.csproj" />
+    <ProjectReference Include="..\PG.Services\PG.Services.csproj" />
+    <ProjectReference Include="..\PG.Models\PG.Models.csproj" />
+  </ItemGroup>
+
 
 </Project>
