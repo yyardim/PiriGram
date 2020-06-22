@@ -25,6 +25,7 @@ namespace PG.Api
             services.AddSingleton(new ConnectionString(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<IClipService, ClipService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

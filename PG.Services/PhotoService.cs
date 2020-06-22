@@ -20,12 +20,13 @@ namespace PG.Services
         {
             var sql = "sp_Photo_GetById";
             var p = new DynamicParameters();
-            p.Add("Id", Id, DbType.Guid);
 
             try
             {
                 using (var conn = new SqlConnection(_connectionString.Value))
                 {
+                    p.Add("Id", Id, DbType.Guid);
+
                     var response = await conn.QueryAsync<Photo>(
                         sql: sql,
                         param: p,
