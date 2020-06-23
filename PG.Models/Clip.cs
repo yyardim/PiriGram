@@ -9,7 +9,7 @@ namespace PG.Models
         public String Title { get; set; }
         public String Description { get; set; }
         public Guid UserId { get; set; }
-        public virtual User User { get; set; }
+        public List<User> User { get; set; }
         public List<Photo> Photos { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿-- =============================================
 -- Author:		Yener Yardim
--- Create date: 6/21/2020
+-- Create date: 6/22/2020
 -- Description:	Gets Cips by UserId
 --				exec sp_Clips_GetByUserName @userName = 'yyardim'
 -- =============================================
@@ -17,99 +17,49 @@ create procedure [dbo].[sp_Clips_GetByUserName]
 )
 as
 begin
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	set nocount on;
 
-	/* temp tables */
-	begin
-		if OBJECT_ID('tempdb..#UserClips') is not null drop table #UserClips
-		create table #UserClips (
-			Id				uniqueidentifier,
-			Title			nvarchar(100),
-			[Description]	nvarchar(2000),
-			DateCreated		datetime,
-			photoId			uniqueidentifier,
-			photoTitle		nvarchar(100),
-			[Subject]		nvarchar(100),
-			[Sort]			smallint,
-			[Latitude]		decimal(9,6),
-			[Longitude]		decimal(9,6),
-			[Altitude]		decimal(9,6),
-			userId			uniqueidentifier,
-			UserName		nvarchar(50),
-			FirstName		nvarchar(50),
-			LastName		nvarchar(50),
-			Email			nvarchar(40),
-			AvatarUrl		nvarchar(100)
-		);
-	end
-
-	--	Populate #UserClips List of Clips for the @User fetched by the @UserName
-	insert into #UserClips (
-			Id,
-			Title,
-			[Description],
-			DateCreated,
-			photoId,
-			photoTitle,
-			[Subject],
-			[Sort],
-			[Latitude],
-			[Longitude],
-			[Altitude],
-			userId,
-			UserName,
-			FirstName,
-			LastName,
-			Email,
-			AvatarUrl)
 	select
 		c.Id,
 		c.Title,
 		c.[Description],
 		c.DateCreated,
-		p.Id,
-		p.Title,
-		p.[Subject],
-		p.[Sort],
-		p.[Latitude],
-		p.[Longitude],
-		p.[Altitude],
-		u.Id,
-		u.UserName,
-		u.FirstName,
-		u.LastName,
-		u.Email,
-		u.AvatarUrl
+		(
+			select
+				u.Id,
+				u.UserName,
+				u.FirstName,
+				u.LastName,
+				u.Email,
+				u.AvatarUrl
+			from
+				Users u 
+			where 1 = 1
+				and c.UserId = u.Id
+				and u.UserName = @userName
+			for json path
+		) [User],
+		(
+			select
+				p.Id,
+				p.Title,
+				p.[Subject],
+				p.[Sort],
+				p.[Latitude],
+				p.[Longitude],
+				p.[Altitude]
+			from
+				Photos p
+			where 1 = 1
+				and c.Id = p.ClipId
+			for json path
+		) Photos		
 	from 
 		Clips c
-		inner join Photos p on c.Id = p.ClipId
-		inner join Users u on c.UserId = u.Id
-
-	-- Return Results
-	select
-		Id,
-		Title,
-		[Description],
-		DateCreated,
-		photoId as 'Id',
-		photoTitle as 'Title',
-		[Subject],
-		[Sort],
-		[Latitude],
-		[Longitude],
-		[Altitude],
-		userId as 'Id',
-		UserName,
-		FirstName,
-		LastName,
-		Email,
-		AvatarUrl
-	from
-		#UserClips
-
-	-- Cleanup
-	drop table #UserClips
+	where 1 = 1
+	order by
+		c.Id
+	for
+		json path
 
 end

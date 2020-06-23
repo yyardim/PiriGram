@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/photos",
+      "launchUrl": "api/clips?userName=yyardim",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
