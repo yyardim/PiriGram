@@ -5,9 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PG.Application\PG.Application.csproj" />
     <ProjectReference Include="..\PG.Services.Contracts\PG.Services.Contracts.csproj" />
     <ProjectReference Include="..\PG.Services\PG.Services.csproj" />
     <ProjectReference Include="..\PG.Models\PG.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
   </ItemGroup>
 
 

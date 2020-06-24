@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PG.Application.Requests.Clips;
 using PG.Models;
-using PG.Services.Contracts;
 
 namespace PG.Api.Controllers
 {
@@ -13,20 +13,20 @@ namespace PG.Api.Controllers
     [ApiController]
     public class ClipsController : ControllerBase
     {
-        private readonly ConnectionString _connectionString;
-        private readonly IClipService _clipService;
+        private readonly IMediator _mediator;
         public ClipsController(
-            ConnectionString connectionString,
-            IClipService clipService)
+            IMediator mediator)
         {
-            _connectionString = connectionString;
-            _clipService = clipService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<Clip>> Get(String userName)
+        [ProducesResponseType(typeof(List<Clip>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Get(String userName)
         {
-            return await _clipService.GetClipsbyUserName(userName);
+            var clips = await _mediator.Send(new GetClipsRequest(userName));
+
+            return Ok(clips);
         }
     }
 }

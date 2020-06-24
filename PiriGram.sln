@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Services.Contracts", "PG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PG.Utilities", "PG.Utilities\PG.Utilities.csproj", "{D3BDCC87-8D39-4B3B-BF98-EDE08FF9925A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PG.Application", "PG.Application\PG.Application.csproj", "{B519ECBF-1404-4E72-8BEF-84195A26C9F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{D3BDCC87-8D39-4B3B-BF98-EDE08FF9925A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3BDCC87-8D39-4B3B-BF98-EDE08FF9925A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3BDCC87-8D39-4B3B-BF98-EDE08FF9925A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

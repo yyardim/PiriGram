@@ -1,8 +1,12 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PG.Application.Handlers.QueryHandlers.Clips;
+using PG.Application.Requests.Clips;
+using PG.Application.Responses.Clips;
 using PG.Models;
 using PG.Services;
 using PG.Services.Contracts;
@@ -24,6 +28,9 @@ namespace PG.Api
             services.AddControllers();
             services.AddSingleton(new ConnectionString(Configuration.GetConnectionString("DefaultConnection")));
 
+            var assembly = System.AppDomain.CurrentDomain.Load("PG.Application");
+            services.AddMediatR(assembly);
+            
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IClipService, ClipService>();
         }
