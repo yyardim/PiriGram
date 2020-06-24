@@ -2,12 +2,11 @@
 using Newtonsoft.Json;
 using PG.Models;
 using PG.Services.Contracts;
+using PG.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PG.Services
@@ -22,22 +21,24 @@ namespace PG.Services
         public async Task<List<Clip>> GetClipsbyUserName(String userName)
         {
             var sql = "sp_Clips_GetByUserName";
-            var prms = new DynamicParameters();
+            var parameters = new DynamicParameters();
             List<Clip> result = new List<Clip>();
             try
             {
                 using (var conn = new SqlConnection(_connectionString.Value))
                 {
-                    prms.Add("userName", userName, DbType.String);
-                    var response = await conn.ExecuteScalarAsync<string>(
+                    parameters.Add("userName", userName, DbType.String);
+                    var response = await conn.QueryAsync<string>(
                         sql: sql,
-                        param: prms,
+                        param: parameters,
                         commandType: CommandType.StoredProcedure
                     );
 
-                    if (response != null)
+                    // Join possible multi rowset
+                    var responseMerged = string.Join("", response);
+                    if (responseMerged != null)
                     {
-                        result = JsonConvert.DeserializeObject<List<Clip>>(response);
+                        result = JsonConvert.DeserializeObject<List<Clip>>(StringHelper.JsonForDeserialize(responseMerged));
                     }
                     return result;
                 }

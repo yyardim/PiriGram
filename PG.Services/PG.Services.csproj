@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PG.Services.Contracts\PG.Services.Contracts.csproj" />
+    <ProjectReference Include="..\PG.Utilities\PG.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

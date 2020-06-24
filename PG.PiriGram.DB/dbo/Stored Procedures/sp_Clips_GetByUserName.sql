@@ -1,6 +1,6 @@
 ﻿-- =============================================
 -- Author:		Yener Yardim
--- Create date: 6/22/2020
+-- Create date: 6/21/2020
 -- Description:	Gets Cips by UserId
 --				exec sp_Clips_GetByUserName @userName = 'yyardim'
 -- =============================================
@@ -29,15 +29,19 @@ begin
 				u.Id,
 				u.UserName,
 				u.FirstName,
+				u.MiddleName,
 				u.LastName,
 				u.Email,
-				u.AvatarUrl
+				u.AvatarUrl,
+				u.About
 			from
 				Users u 
 			where 1 = 1
 				and c.UserId = u.Id
 				and u.UserName = @userName
-			for json path
+			for json path,
+				WITHOUT_ARRAY_WRAPPER,
+				INCLUDE_NULL_VALUES
 		) [User],
 		(
 			select
