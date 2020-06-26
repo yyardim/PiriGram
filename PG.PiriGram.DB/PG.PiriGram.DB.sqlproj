@@ -67,7 +67,7 @@
     <Build Include="dbo\Tables\Photos.sql" />
     <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Tables\PhotoUserTags.sql" />
-    <Build Include="dbo\Stored Procedures\sp_Photo_GetById.sql" />
+    <None Include="dbo\Stored Procedures\sp_Photo_GetById.sql" />
     <None Include="dbo\Stored Procedures\sp_Clips_GetByUserName.sql" />
   </ItemGroup>
   <ItemGroup>

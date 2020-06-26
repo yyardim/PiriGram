@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using PG.Application.Requests.Photos;
 using PG.Models;
-using PG.Services.Contracts;
 
 namespace PG.Api.Controllers
 {
@@ -11,21 +12,21 @@ namespace PG.Api.Controllers
     [ApiController]
     public class PhotosController : ControllerBase
     {
-        private readonly ILogger<PhotosController> _logger;
-        private readonly IPhotoService _photoService;
+        private readonly IMediator _mediator;
 
         public PhotosController(
-            ILogger<PhotosController> logger,
-            IPhotoService photoService)
+            IMediator mediator)
         {
-            _logger = logger;
-            _photoService = photoService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<Photo> Get(Guid Id)
+        [ProducesResponseType(typeof(Photo), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Get(Guid Id)
         {
-            return await _photoService.GetPhotoById(Id);
+            var photo = await _mediator.Send(new GetPhotoRequest(Id));
+
+            return Ok(photo);
         }
     }
 }
