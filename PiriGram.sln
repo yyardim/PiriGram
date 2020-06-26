@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Services", "PG.Services\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Services.Contracts", "PG.Services.Contracts\PG.Services.Contracts.csproj", "{05643888-09E2-461D-BF0C-327F14BE852A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PG.Utilities", "PG.Utilities\PG.Utilities.csproj", "{D3BDCC87-8D39-4B3B-BF98-EDE08FF9925A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Utilities", "PG.Utilities\PG.Utilities.csproj", "{D3BDCC87-8D39-4B3B-BF98-EDE08FF9925A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PG.Application", "PG.Application\PG.Application.csproj", "{B519ECBF-1404-4E72-8BEF-84195A26C9F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PG.Application", "PG.Application\PG.Application.csproj", "{B519ECBF-1404-4E72-8BEF-84195A26C9F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PG.Application.Tests", "PG.Application.Tests\PG.Application.Tests.csproj", "{F4D8FE39-5CB5-4E27-8006-DDEC0B45C1F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B519ECBF-1404-4E72-8BEF-84195A26C9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D8FE39-5CB5-4E27-8006-DDEC0B45C1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D8FE39-5CB5-4E27-8006-DDEC0B45C1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D8FE39-5CB5-4E27-8006-DDEC0B45C1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D8FE39-5CB5-4E27-8006-DDEC0B45C1F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
